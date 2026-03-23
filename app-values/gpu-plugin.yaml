@@ -1,0 +1,9 @@
+apiVersion: deviceplugin.intel.com/v1
+kind: GpuDevicePlugin
+metadata:
+  name: gpu-device-plugin
+  namespace: kube-system
+spec:
+  image: intel/intel-gpu-plugin:0.35.0
+  # This is the modern way to enable sharing in v0.35.0+
+  sharedDevNum: 5

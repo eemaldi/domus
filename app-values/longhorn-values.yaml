@@ -1,0 +1,14 @@
+defaultSettings:
+  # This matches the 'extraMounts' we added to your Talos machine config
+  defaultDataPath: /var/lib/longhorn 
+  
+  # Recommended for small or single-node clusters
+  replicaAutoBalance: "best-effort"
+  
+  # Since you are moving to 'Bare Metal K8s', this ensures Longhorn 
+  # doesn't try to use your small Talos OS partition.
+  createDefaultDiskLabeledNodes: true
+
+persistence:
+  defaultClass: true
+  defaultClassReplicaCount: 1 # Set to 1 if you only have one node initially
