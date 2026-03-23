@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: domus-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:eemaldi/domus.git
+    targetRevision: HEAD
+    path: apps # Argo will now watch the entire apps folder
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
